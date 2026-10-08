@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório / Documento Interativo</title>
+  <style>
+    /* Estilos Gerais */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      color: #333333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Cabeçalho e Menu Navegação */
+    header {
+      background-color: #521459;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+    }
+
+    nav button {
+      background-color: transparent;
+      color: #cbd5e1;
+      border: none;
+      padding: 8px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav button:hover {
+      background-color: #503355;
+      color: #fff;
+    }
+
+    /* Botão selecionado no menu */
+    nav button.active {
+      background-color: #9c25eb;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Conteúdo Principal */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    /* Seções (Páginas) */
+    .section {
+      display: none;
+      /* Esconde todas as seções por padrão */
+    }
+
+    .section.active {
+      display: block;
+      /* Exibe apenas a seção ativa */
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #371e3b;
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    /* Estilização da Tabela */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      border: 1px solid #cbd5e1;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Menu de Navegação -->
+  <header>
+    <h1>Pêndulo Simples </h1>
+    <nav>
+      <ul>
+        <li><button class="nav-btn active" onclick="showSection('introducao')">Introdução</button></li>
+        <li><button class="nav-btn" onclick="showSection('fundamentos')">Teórica e máteriais</button></li>
+        <li><button class="nav-btn" onclick="showSection('Medidas')">Experiencia e Observações</button></li>
+        <li><button class="nav-btn" onclick="showSection('Procedimento e Dados')">Procedimento e Dados</button></li>
+        <li><button class="nav-btn" onclick="showSection('Conclusão')">Incertezas e Conclusão </button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Central -->
+  <main>
+
+    <!-- Seção 1: Introdução -->
+    <section id="introducao" class="section active">
+      <h2>Introdução e Principais Achados</h2>
+      <p>O pêndulo simples consiste em uma massa pontual suspensa por um fio inextensível, de massa desprezível, que
+        oscila em um plano vertical sob a ação da gravidade.
+        Apesar de ser um sistema aparentemente simples, seu estudo revela princípios fundamentais da Mecânica Clássica.
+      </p>
+      <p>O período (T) é o tempo necessário para realizar uma oscilação completa — ir e voltar à posição inicial.
+        Espera-se que esse tempo dependa de fatores como o comprimento do fio,
+        a massa do corpo suspenso e a amplitude do movimento, mas nem todos esses fatores influenciam o período de forma
+        significativa.</p>
+      <p>Este projeto investiga, de forma sistemática, quais variáveis determinam o período de um pêndulo simples,
+        aplicando conceitos de Movimento Harmônico Simples (MHS),
+        medidas de tempo, construção de gráficos e análise quantitativa, com base nas Leis de Newton.</p>
+    </section>
+
+    <!-- Seção 2: fundamentos -->
+    <section id="fundamentos" class="section">
+      <h2>Fundamentação Teórica</h2>
+      <p>Para pequenas amplitudes (ângulo inicial menor que ~10°), o movimento do pêndulo simples
+        é aproximado a um Movimento Harmônico Simples, e o período é dado por:</p>
+      <p><b>T = 2π√(L/g)</b></p>
+      <br>
+      <p>Onde:</p>
+      <p> <b>- T</b> = período (s)</p>
+      <p><b>​- L</b> = comprimento do fio (m)</p>
+      <p><b>​- g</b> = gravidade (~9,81 m/s²)</p>
+      <br>
+      <p><b>Previsões teóricas:</b></p>
+      <p><b>- Comprimento (L):</b> Quanto maior o fio, maior o período → o pêndulo oscila mais devagar.</p>
+      <p><b>- Massa (m):</b> Não aparece na fórmula → não influencia o período.</p>
+      <p><b>​-Amplitude (θ):</b> Para ângulos pequenos, também não influencia.</p>
+      <br>
+      <p> <b>Gráfico esperado</b></p>
+      <p>O gráfico deve ser uma reta passando pela origem. Isso permite calcular a aceleração da gravidade
+        experimentalmente.</p>
+      <br>
+      <h2>Arranjo Experimental e Materiais</h2>
+      <p>O pêndulo é fixado em um suporte rígido, com a massa suspensa a diferentes comprimentos. Desloca-se a massa de
+        um
+        ângulo pequeno e solta-se do repouso. Mede-se o tempo de 10 oscilações consecutivas e divide-se por 10 para
+        obter o
+        período médio, reduzindo a incerteza de contagem.</p>
+      <p><b>Lista de Materiais Utilizados</b></p>
+      <p><b>Esferas de tamanhos diferentes:</b> 30,78 g, 50,79 g, 79,33 g, 86,78 g.</p>
+      <p><b>Fio:</b> 0,2 m; 0,4 m; 0,6 m; 0,8 m; 1,0 m; 1,2 m.</p>
+      <p><b>Ponto fixo de suporte:</b>gancho com ventosa</p>
+      <p><b>Suporte:</b>Régua, Transferidor e Cronômetro Digital.</p>
+      <img src="WhatsApp Image 2026-09-30 at 16.35.40.jpeg" alt="Image do experimento" width="300px" height="400px"> 
+      <p>Foto do experimento</p>
+
+    </section>
+
+    <!-- Seção 3: Tabelas -->
+    <section id="Medidas" class="section">
+      <h2>Medidas de Segurança e Controle do Experimento</h2>
+      <p><b>Preparação:</b></p>
+      <p><b>1.</b> Fixar o suporte rígido em bancada estável.</p>
+      <p><b>2.</b>Medir o comprimento do fio do ponto de suspensão até o centro de massa da esfera.</p>
+      <p><b>3.</b>Definir comprimentos: 0,20 m; 0,40 m; 0,60 m; 0,80 m; 1,00 m; 1,20 m.</p>
+      <p><b>4.</b>Usar amplitude inicial fixa em 5° para todos os testes de comprimento e massa.</p>
+      <br>
+      <p><b>Coleta de Dados</b></p>
+      <p><b>Parte 1</b>– Influência da massa:</p>
+      <p>- Para cada massa, soltar com o mesmo comprimento e amplitude, a partir do repouso.</p>
+      <p>- Fazer 2 oscilações completas (para deixar com menos variação).</p>
+      <p>- Cronometrar 10 repetições para cada massa</p>
+      <br>
+      <p><b>Parte 2</b> Influência do comprimento:</p>
+      <p>- Para cada L, soltar a mesma massa e amplitude, a partir do repouso.</p>
+      <p>- Fazer 2 oscilações completas (para deixar com menos variação).</p>
+      <p>- Cronometrar 10 repetições para cada comprimento.</p>
+      <br>
+      <p><b>Parte 3</b>Influência da amplitude:</p>
+      <p>- Para cada amplitude, soltar com o mesmo comprimento e massa, a partir do repouso.</p>
+      <p>- Fazer 2 oscilações completas (para deixar com menos variação).</p>
+      <p>- Cronometrar 10 repetições para cada amplitude.</p>
+      <br>
+      <p><b>Precauções:</b></p>
+      <p>- Evitar movimento elíptico — a oscilação deve ser apenas em um plano.</p>
+      <p>- Não alterar o fio durante a mesma série de medições.</p>
+      <p>- Iniciar a contagem após a segunda oscilação para reduzir erro de reação.</p>
+      <p>- Manter o fio esticado sem tensão excessiva.</p>
+      <br>
+
+
+    </section>
+
+    <!-- Seção 4: Procedimento e Dados -->
+    <section id="Procedimento e Dados" class="section">
+      <h2>Procedimento Experimental e Observações Qualitativas</h2>
+      <p>O protocolo consistiu em realizar medidas em três condições: comprimento, massa e ângulo. Nos ensaios
+        preliminares, desvios na trajetória foram corrigidos com marcações guia no suporte, garantindo que o pêndulo
+        oscilasse apenas no plano vertical. Para medir o tempo de cada medição utilizamos o cronômetro digital.
+      </p>
+      <ul>
+        <p><b>Observações Qualitativas</b></p>
+        <li><b>Observações visuais: </b>Quanto maior o comprimento do fio, mais lentas e suaves se mostraram as
+          oscilações. Ao aumentar a amplitude inicial, percebeu-se que o movimento se tornava menos regular, com leve
+          desvio lateral. Para ângulos pequenos, o movimento manteve-se harmônico e estável.</li>
+        Quanto maior o comprimento do fio, mais lentas e suaves se mostraram as oscilações. Ao aumentar a amplitude
+        inicial, percebeu-se que o movimento se tornava menos regular, com leve desvio lateral. Para ângulos pequenos, o
+        movimento manteve-se harmônico e estável.</p>
+        <li><b>​Seleção do material</b></li>
+        <p> Foram selecionados fios rígidos e inextensíveis, de massa desprezível, e esferas metálicas compactas para
+          minimizar a resistência do ar e garantir o comportamento de pêndulo simples</p>
+      </ul>
+      <br>
+      <h2>Dados Obtidos (números e gráficos) e Análise Cinemática </h2>
+      <p>Os dados experimentais coletados e processados a partir das médias de 10 repetições para cada ponto e os
+        valores eles são aproximados e estão consolidados na tabela abaixo: </p>
+
+
+    <title>Tabela de Variação de Massa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            text-align: left;
+            padding: 12px 10px;
+        }
+        th {
+            background-color: #b262c4; /* Azul claro idêntico ao da imagem */
+            color: #000000;
+            font-weight: normal;
+        }
+        /* Alinhamento e estilo específico da coluna de Média */
+        .bold-col {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>1. Variação de Massa (g)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Massa (g)</th>
+                <th>Medida 1 (s)</th>
+                <th>Medida 2 (s)</th>
+                <th>Medida 3 (s)</th>
+                <th>Medida 4 (s)</th>
+                <th>Medida 5 (s)</th>
+                <th>Média (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>30,78</td>
+                <td>14,02</td>
+                <td>14,24</td>
+                <td>14,07</td>
+                <td>14,04</td>
+                <td>14,17</td>
+                <td class="bold-col">14,11</td>
+            </tr>
+            <tr>
+                <td>50,79</td>
+                <td>14,04</td>
+                <td>14,04</td>
+                <td>13,91</td>
+                <td>13,91</td>
+                <td>14,24</td>
+                <td class="bold-col">14,03</td>
+            </tr>
+            <tr>
+                <td>79,33</td>
+                <td>14,11</td>
+                <td>14,26</td>
+                <td>14,23</td>
+                <td>14,23</td>
+                <td>14,06</td>
+                <td class="bold-col">14,18</td>
+            </tr>
+            <tr>
+                <td>85,78</td>
+                <td>14,25</td>
+                <td>13,99</td>
+                <td>14,17</td>
+                <td>14,10</td>
+                <td>14,11</td>
+                <td class="bold-col">14,12</td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+    <title>Tabela de Variação de Comprimento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            text-align: left;
+            padding: 12px 10px;
+        }
+        th {
+            background-color: #9ec5e6; /* Tom de azul idêntico ao da imagem */
+            color: #000000;
+            font-weight: normal;
+        }
+        .bold-col {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>2. Variação de Comprimento (m)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Comprimento (m)</th>
+                <th>Medida 1 (s)</th>
+                <th>Medida 2 (s)</th>
+                <th>Medida 3 (s)</th>
+                <th>Medida 4 (s)</th>
+                <th>Medida 5 (s)</th>
+                <th>Média (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0,20</td>
+                <td>8,00</td>
+                <td>8,30</td>
+                <td>8,34</td>
+                <td>8,26</td>
+                <td>8,32</td>
+                <td class="bold-col">8,24</td>
+            </tr>
+            <tr>
+                <td>0,40</td>
+                <td>11,63</td>
+                <td>11,60</td>
+                <td>11,64</td>
+                <td>11,68</td>
+                <td>11,61</td>
+                <td class="bold-col">11,63</td>
+            </tr>
+            <tr>
+                <td>0,60</td>
+                <td>14,23</td>
+                <td>14,09</td>
+                <td>14,24</td>
+                <td>14,12</td>
+                <td>14,18</td>
+                <td class="bold-col">14,17</td>
+            </tr>
+            <tr>
+                <td>0,80</td>
+                <td>16,00</td>
+                <td>16,48</td>
+                <td>16,40</td>
+                <td>16,15</td>
+                <td>16,00</td>
+                <td class="bold-col">16,21</td>
+            </tr>
+            <tr>
+                <td>1,00</td>
+                <td>18,63</td>
+                <td>18,71</td>
+                <td>18,57</td>
+                <td>18,74</td>
+                <td>18,83</td>
+                <td class="bold-col">18,70</td>
+            </tr>
+            <tr>
+                <td>1,20</td>
+                <td>19,94</td>
+                <td>19,91</td>
+                <td>20,02</td>
+                <td>19,98</td>
+                <td>19,98</td>
+                <td class="bold-col">19,97</td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+    <title>Tabela de Variação de Ângulo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            text-align: left;
+            padding: 12px 10px;
+        }
+        th {
+            background-color: #9ec5e6; /* Tom de azul idêntico ao da imagem */
+            color: #000000;
+            font-weight: normal;
+        }
+        .bold-col {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>3. Variação de Ângulo (°)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ângulo (°)</th>
+                <th>Medida 1 (s)</th>
+                <th>Medida 2 (s)</th>
+                <th>Medida 3 (s)</th>
+                <th>Medida 4 (s)</th>
+                <th>Medida 5 (s)</th>
+                <th>Média (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>5</td>
+                <td>14,05</td>
+                <td>14,12</td>
+                <td>13,91</td>
+                <td>14,05</td>
+                <td>14,03</td>
+                <td class="bold-col">14,03</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>14,07</td>
+                <td>14,11</td>
+                <td>14,18</td>
+                <td>14,04</td>
+                <td>14,01</td>
+                <td class="bold-col">14,08</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>14,09</td>
+                <td>14,19</td>
+                <td>13,91</td>
+                <td>13,92</td>
+                <td>14,03</td>
+                <td class="bold-col">14,03</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>14,17</td>
+                <td>13,90</td>
+                <td>13,97</td>
+                <td>14,11</td>
+                <td>14,04</td>
+                <td class="bold-col">14,04</td>
+            </tr>
+            <tr>
+                <td>45</td>
+                <td>13,97</td>
+                <td>14,19</td>
+                <td>14,10</td>
+                <td>14,09</td>
+                <td>14,09</td>
+                <td class="bold-col">14,09</td>
+            </tr>
+            <tr>
+                <td>60</td>
+                <td>14,05</td>
+                <td>14,10</td>
+                <td>14,13</td>
+                <td>14,06</td>
+                <td>14,02</td>
+                <td class="bold-col">14,07</td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+    <title>Tabela das Médias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            text-align: left;
+            padding: 12px 10px;
+        }
+        th {
+            background-color: #9ec5e6; /* Tom de azul idêntico ao da imagem */
+            color: #000000;
+            font-weight: normal;
+        }
+        .bold-col {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tabela das Médias</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Variável Testada</th>
+                <th>Valor Real</th>
+                <th>Escala Relativa (0 a 1)</th>
+                <th>Tempo / Período Médio (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Massa</td>
+                <td>30,78</td>
+                <td>0,00</td>
+                <td class="bold-col">14,11</td>
+            </tr>
+            <tr>
+                <td>Massa</td>
+                <td>50,79</td>
+                <td>0,36</td>
+                <td class="bold-col">14,03</td>
+            </tr>
+            <tr>
+                <td>Massa</td>
+                <td>79,33</td>
+                <td>0,88</td>
+                <td class="bold-col">14,18</td>
+            </tr>
+            <tr>
+                <td>Massa</td>
+                <td>85,78</td>
+                <td>1,00</td>
+                <td class="bold-col">14,12</td>
+            </tr>
+            <tr>
+                <td>Ângulo</td>
+                <td>5</td>
+                <td>0,00</td>
+                <td class="bold-col">14,03</td>
+            </tr>
+            <tr>
+                <td>Ângulo</td>
+                <td>10</td>
+                <td>0,09</td>
+                <td class="bold-col">14,08</td>
+            </tr>
+            <tr>
+                <td>Ângulo</td>
+                <td>20</td>
+                <td>0,27</td>
+                <td class="bold-col">14,03</td>
+            </tr>
+            <tr>
+                <td>Ângulo</td>
+                <td>30</td>
+                <td>0,45</td>
+                <td class="bold-col">14,04</td>
+            </tr>
+            <tr>
+                <td>Ângulo</td>
+                <td>45</td>
+                <td>0,73</td>
+                <td class="bold-col">14,09</td>
+            </tr>
+            <tr>
+                <td>Ângulo</td>
+                <td>60</td>
+                <td>1,00</td>
+                <td class="bold-col">14,07</td>
+            </tr>
+            <tr>
+                <td>Comprimento</td>
+                <td>0,20</td>
+                <td>0,00</td>
+                <td class="bold-col">8,24</td>
+            </tr>
+            <tr>
+                <td>Comprimento</td>
+                <td>0,40</td>
+                <td>0,20</td>
+                <td class="bold-col">11,63</td>
+            </tr>
+            <tr>
+                <td>Comprimento</td>
+                <td>0,60</td>
+                <td>0,40</td>
+                <td class="bold-col">14,17</td>
+            </tr>
+            <tr>
+                <td>Comprimento</td>
+                <td>0,80</td>
+                <td>0,60</td>
+                <td class="bold-col">16,21</td>
+            </tr>
+            <tr>
+                <td>Comprimento</td>
+                <td>1,00</td>
+                <td>0,80</td>
+                <td class="bold-col">18,70</td>
+            </tr>
+            <tr>
+                <td>Comprimento</td>
+                <td>1,20</td>
+                <td>1,00</td>
+                <td class="bold-col">19,97</td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+<br>
+      <img src="WhatsApp Image 2026-09-30 at 16.37.33.jpeg" alt="Gráfico" width="800px" height="400px">
+     <br>
+     <br>
+    <title>Legenda do Gráfico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+            font-size: 16px;
+        }
+        .legenda-container {
+            line-height: 2;
+        }
+        .legenda-titulo {
+            font-weight: bold;
+        }
+        .legenda-item {
+            display: flex;
+            align-items: center;
+            margin-left: 40px; /* Alinhamento recuado identico à imagem */
+            margin-bottom: 8px;
+        }
+        /* Definição das Formas Geométricas em CSS */
+        .forma {
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .losango {
+            width: 10px;
+            height: 10px;
+            background-color: #d4af37; /* Amarelo escuro/dourado para leitura */
+            transform: rotate(45deg);
+        }
+        .quadrado {
+            width: 10px;
+            height: 10px;
+            background-color: #1e60aa;
+        }
+        .triangulo {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 11px solid #b22222;
+        }
+        /* Cores dos Textos */
+        .txt-amarelo { color: #b89214; }
+        .txt-azul { color: #1e60aa; }
+        .txt-vermelho { color: #b22222; }
+    </style>
+</head>
+<body>
+
+    <div class="legenda-container">
+        <span class="legenda-titulo">Legenda:</span>
+        
+        <div class="legenda-item txt-amarelo">
+            <span class="forma losango"></span>
+            amarelo (losango) = massa
+        </div>
+        
+        <div class="legenda-item txt-azul">
+            <span class="forma quadrado"></span>
+            azul (quadrado) = amplitude
+        </div>
+        
+        <div class="legenda-item txt-vermelho">
+            <span class="forma triangulo"></span>
+            vermelho (triângulo) = comprimento
+        </div>
+    </div>
+
+    <br>
+
+
+    </section>
+
+    <!-- Seção 5: Resultados -->
+    <section id="Conclusão" class="section">
+      <h2>Análise de Incertezas e Margem de Erro Experimental </h2>
+      <p>Existem circunstâncias que acabam alterando e trazendo incerteza para os dados entre eles são:</p>
+      <p><b>Tempo de Reação Humana:</b>Ao apertar o botão do cronômetro, ocorre um pequeno atraso do operador (cerca de
+        0,1s a 0,2s).</p>
+      <p><b>Medição do comprimento:</b>Ao apertar o botão do cronômetro, ocorre um pequeno atraso do operador (cerca de
+        0,1s a 0,2s).</p>
+      <br>
+      <h2> Conclusão e Avaliação do Projeto
+      </h2>
+      <p>O experimento sobre o período de oscilação de um pêndulo simples permitiu verificar experimentalmente a relação
+        entre o comprimento do fio, o tempo de oscilação e a massa do pêndulo, em concordância com a teoria do Movimento
+        Harmônico Simples. Os resultados confirmaram que o período aumenta proporcionalmente à raiz quadrada do
+        comprimento, sendo praticamente independente da massa do corpo e da amplitude para ângulos pequenos.
+      </p>
+      <br>
+      <p>Utilizou-se cronômetro digital para a aquisição dos dados, o que garante precisão nas leituras; mesmo assim, o
+        tempo de reação humano ao acionar e parar o aparelho introduziu uma incerteza. Os valores medidos aproximaram-se
+        dos calculados pela fórmula teórica:
+      </p>
+      <br>
+      <p><b>T = 2π√(L/g)</b></p>
+      <br>
+      <p>As pequenas diferenças observadas foram atribuídas à resistência do ar, leve flexibilidade do fio, desvios na
+        trajetória e ao tempo de resposta do operador. Dessa forma, o objetivo do trabalho foi plenamente atingido:
+        comprovou-se na prática o comportamento do pêndulo simples.
+      </p>
+
+
+
+
+  </main>
+
+  <!-- Script para alternar entre as seções -->
+  <script>
+    function showSection(sectionId) {
+      // Oculta todas as seções
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Remove a classe 'active' de todos os botões
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+
+      // Exibe a seção clicada
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.classList.add('active');
+      }
+
+      // Marca o botão atual como ativo
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+
+</body>
+
+</html>
